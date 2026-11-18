@@ -1,0 +1,14 @@
+{
+  "name": "mare-alta",
+  "private": true,
+  "type": "module",
+  "description": "Site de uma página para a marisqueira fictícia Maré Alta (HTML, CSS e JavaScript, sem build).",
+  "scripts": {
+    "start": "python3 -m http.server 5510",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "vitest": "^5.1.1"
+  }
+}
