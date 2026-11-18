@@ -2,6 +2,16 @@
 
 Site de uma página para um restaurante **fictício** em Olhão, Algarve. Feito só com HTML, CSS e JavaScript (módulos ES nativos), sem frameworks nem build.
 
+**Site:** https://rfj26.github.io/mare-alta/
+
+![Página inicial no desktop: hero com o título "Marisco da ria, à mesa em Olhão" e o indicador "Aberto agora"](docs/screenshots/desktop.webp)
+
+<p align="center">
+  <img src="docs/screenshots/mobile.webp" width="250" alt="Página inicial no telemóvel">
+  <img src="docs/screenshots/mobile-menu.webp" width="250" alt="Menu no telemóvel, filtrado pela categoria Mariscos">
+  <img src="docs/screenshots/mobile-reservas.webp" width="250" alt="Formulário de reserva no telemóvel">
+</p>
+
 ## Funcionalidades
 
 - **Menu a partir de `data/menu.json`**, com filtros por categoria e por alérgeno (os 14 da UE). Os filtros ficam no URL (`?cat=mariscos&sem=gluten`).
@@ -9,6 +19,11 @@ Site de uma página para um restaurante **fictício** em Olhão, Algarve. Feito 
 - **Reservas por WhatsApp.** O formulário valida os dados e abre `wa.me` com a mensagem formatada.
 - **Indicador "Aberto agora / Fechado"** calculado no fuso `Europe/Lisbon`, mesmo que o visitante esteja noutro fuso. Aceita turnos que passam da meia-noite.
 - Galeria com lightbox em `<dialog>`, mapa do OpenStreetMap carregado só a pedido e dados estruturados `schema.org/Restaurant`.
+- Responsivo (testado a 375, 768 e 1440 px) e com 100 em todas as categorias do Lighthouse.
+
+## Stack
+
+HTML5, CSS (variáveis, Grid, Flexbox), JavaScript (módulos ES), JSON. [Vitest](https://vitest.dev) só para os testes. Publicado no GitHub Pages com GitHub Actions.
 
 ## Correr localmente
 
@@ -20,6 +35,23 @@ python3 -m http.server 5510
 
 Depois abre http://localhost:5510. Também serve a extensão Live Server do VS Code.
 
+## Testes
+
+Os testes cobrem a lógica do horário (aberto/fechado, turnos depois da meia-noite, dia de folga, fuso de Lisboa no inverno e no verão, horas disponíveis para reservar) e a mensagem do WhatsApp (formatação e link `wa.me`).
+
+```bash
+npm install
+npm test
+```
+
+Para confirmar que não dependem do fuso do computador:
+
+```bash
+TZ=America/New_York npm test
+```
+
+O GitHub Actions corre os testes em cada push e só publica o site se passarem.
+
 ## Estrutura
 
 ```
@@ -30,12 +62,13 @@ css/sections.css    estilos de cada secção (Grid e Flexbox)
 js/main.js          arranque e comportamento do cabeçalho
 js/i18n.js          traduções e idioma
 js/menu.js          menu e filtros
-js/reservas.js      formulário de reserva e WhatsApp
+js/reservas.js      formulário de reserva e mensagem do WhatsApp
 js/horario.js       horário, estado aberto/fechado e mapa
 js/galeria.js       lightbox
 data/menu.json      pratos
 data/info.json      horário, contactos, morada e regras de reserva
 i18n/*.json         textos em PT, EN e ES
+tests/              testes Vitest
 ```
 
 ## Editar conteúdos
