@@ -1,0 +1,190 @@
+/* ==========================================================================
+   Cabeçalho
+   ========================================================================== */
+
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  height: var(--header-h);
+  color: var(--espuma);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Fica sólido quando deixa de estar por cima do hero (classe posta pelo JS) */
+.header.is-solido {
+  background: rgb(15 47 69 / 0.94);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 24px -12px rgb(0 0 0 / 0.5);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 100%;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: inherit;
+  font-family: var(--font-titulo);
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+.logo:hover { color: inherit; }
+.logo svg { width: 1.9rem; color: var(--coral); }
+
+.nav { display: flex; align-items: center; gap: 0.25rem; }
+
+.nav__lista {
+  display: flex;
+  gap: 0.25rem;
+  list-style: none;
+  padding: 0;
+}
+
+.nav__lista a {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  color: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  text-decoration: none;
+}
+.nav__lista a:hover { background: rgb(255 253 248 / 0.12); color: inherit; }
+
+.idiomas {
+  display: flex;
+  gap: 2px;
+  margin-left: 0.5rem;
+  padding: 3px;
+  border: 1px solid rgb(255 253 248 / 0.3);
+  border-radius: 999px;
+}
+
+.idiomas button {
+  min-width: 2.5rem;
+  min-height: 2.25rem;
+  padding: 0 0.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.idiomas button[aria-pressed="true"] { background: var(--espuma); color: var(--mar); }
+
+.nav__toggle {
+  display: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+}
+.nav__toggle svg { width: 1.5rem; }
+
+@media (max-width: 960px) {
+  .nav__toggle { display: inline-flex; }
+
+  .nav__lista {
+    position: fixed;
+    inset: var(--header-h) 0 auto;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem var(--gutter) 1.5rem;
+    background: var(--mar);
+    box-shadow: 0 20px 30px -20px rgb(0 0 0 / 0.6);
+  }
+  .nav__lista a { padding: 0.9rem 0.5rem; border-radius: 0; border-bottom: 1px solid rgb(255 253 248 / 0.1); font-size: var(--fs-base); }
+  .nav__lista:not(.is-aberto) { display: none; }
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  display: grid;
+  min-height: min(100svh, 56rem);
+  padding-top: var(--header-h);
+  color: var(--espuma);
+  background: var(--mar);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero__img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Escurece a imagem para o texto ter contraste suficiente */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgb(15 47 69 / 0.92) 0%, rgb(15 47 69 / 0.7) 45%, rgb(15 47 69 / 0.25) 100%),
+    linear-gradient(0deg, rgb(15 47 69 / 0.75) 0%, transparent 40%);
+}
+
+.hero__conteudo {
+  align-self: center;
+  padding-block: clamp(3rem, 2rem + 6vw, 6rem) clamp(5rem, 4rem + 6vw, 8rem);
+}
+
+.hero__local {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #f4c9a8;
+}
+
+.hero__titulo {
+  max-width: 12ch;
+  font-size: var(--fs-hero);
+  font-weight: 600;
+  line-height: 1;
+}
+.hero__titulo em { font-style: italic; font-weight: 400; color: #f7b893; }
+
+.hero__texto {
+  max-width: 34rem;
+  margin-top: 1.5rem;
+  font-size: var(--fs-lg);
+  color: rgb(255 253 248 / 0.9);
+}
+
+.hero__acoes { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.25rem; }
+
+.hero__onda {
+  position: absolute;
+  inset: auto 0 -1px;
+  width: 100%;
+  height: clamp(40px, 6vw, 90px);
+  color: var(--areia);
+}

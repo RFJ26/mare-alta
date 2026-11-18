@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maré Alta · Marisqueira em Olhão, Algarve</title>
+  <meta name="description" content="Marisqueira em Olhão, junto à Ria Formosa. Marisco fresco, peixe grelhado e cataplanas. Reserve mesa pelo WhatsApp.">
+  <meta name="theme-color" content="#0f2f45">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Fontes e imagem principal carregadas cedo para um LCP rápido -->
+  <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/work-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="assets/img/hero-1600.webp" imagesrcset="assets/img/hero-900.webp 900w, assets/img/hero-1600.webp 1600w" imagesizes="100vw" fetchpriority="high">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/sections.css">
+
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo" data-i18n="skip">Saltar para o conteúdo</a>
+
+  <header class="header" data-header>
+    <div class="container header__inner">
+      <a class="logo" href="#topo" aria-label="Maré Alta, início">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+          <path d="M3 13c3.5-4 6.5-4 10 0s6.5 4 10 0 4.5-3 6-2"/>
+          <path d="M3 21c3.5-4 6.5-4 10 0s6.5 4 10 0 4.5-3 6-2"/>
+        </svg>
+        Maré Alta
+      </a>
+
+      <nav class="nav" aria-label="Principal" data-i18n-attr="aria-label:nav.label">
+        <ul class="nav__lista" id="nav-lista" data-nav-lista>
+          <li><a href="#sobre" data-i18n="nav.sobre">Sobre</a></li>
+          <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
+          <li><a href="#galeria" data-i18n="nav.galeria">Galeria</a></li>
+          <li><a href="#reservas" data-i18n="nav.reservas">Reservas</a></li>
+          <li><a href="#horario" data-i18n="nav.horario">Horário</a></li>
+        </ul>
+
+        <div class="idiomas" role="group" aria-label="Idioma" data-i18n-attr="aria-label:nav.idioma">
+          <button type="button" data-lang="pt" aria-pressed="true" lang="pt-PT" title="Português">PT</button>
+          <button type="button" data-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
+          <button type="button" data-lang="es" aria-pressed="false" lang="es" title="Español">ES</button>
+        </div>
+
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-lista" aria-label="Abrir menu" data-nav-toggle data-i18n-attr="aria-label:nav.abrir">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- HERO -->
+    <section class="hero" id="topo" aria-labelledby="hero-titulo">
+      <img class="hero__img"
+           src="assets/img/hero-1600.webp"
+           srcset="assets/img/hero-900.webp 900w, assets/img/hero-1600.webp 1600w"
+           sizes="100vw" width="1600" height="1000"
+           alt="" fetchpriority="high" decoding="async">
+      <div class="container hero__conteudo">
+        <p class="hero__local" data-i18n="hero.local">Olhão · Ria Formosa · Algarve</p>
+        <h1 class="hero__titulo" id="hero-titulo" data-i18n-html="hero.titulo">Marisco da ria, <em>à mesa</em> em Olhão</h1>
+        <p class="hero__texto" data-i18n="hero.texto">Amêijoas, ostras e peixe que chegam todas as manhãs do mercado ao lado. Cozinha algarvia, sem pressas, com vista para a ria.</p>
+        <div class="hero__acoes">
+          <a class="btn btn--primario" href="#reservas" data-i18n="hero.reservar">Reservar mesa</a>
+          <a class="btn btn--contorno" href="#menu" data-i18n="hero.menu">Ver menu</a>
+        </div>
+      </div>
+      <svg class="hero__onda" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+        <path fill="currentColor" d="M0 50c120 30 240 30 360 0s240-30 360 0 240 30 360 0 240-30 360 0v40H0z"/>
+      </svg>
+    </section>
+  </main>
+</body>
+</html>
