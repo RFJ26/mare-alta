@@ -33,9 +33,27 @@ function iniciarCabecalho() {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') fechar(); });
 }
 
+/** Botão "Reservar" do telemóvel desaparece no hero e na própria secção de reservas. */
+function iniciarBotaoFlutuante() {
+  const botao = document.querySelector('[data-reservar-flutuante]');
+  const alvos = [document.querySelector('.hero'), document.getElementById('reservas')].filter(Boolean);
+  if (!botao || !('IntersectionObserver' in window)) return;
+  const visiveis = new Set();
+  const observador = new IntersectionObserver((entradas) => {
+    entradas.forEach((e) => (e.isIntersecting ? visiveis.add(e.target) : visiveis.delete(e.target)));
+    const esconder = visiveis.size > 0;
+    botao.classList.toggle('is-escondido', esconder);
+    botao.toggleAttribute('inert', esconder);
+  }, { threshold: 0.15 });
+  alvos.forEach((alvo) => observador.observe(alvo));
+}
+
 iniciarCabecalho();
+iniciarBotaoFlutuante();
 iniciarGaleria();
 await iniciarI18n();
 iniciarMenu();
 iniciarReservas();
 iniciarHorario();
+
+document.querySelectorAll('[data-ano]').forEach((el) => { el.textContent = String(new Date().getFullYear()); });

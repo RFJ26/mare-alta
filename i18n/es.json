@@ -133,5 +133,10 @@
   "local.ver_mapa": "Ver en el mapa",
   "local.aviso_mapa": "El mapa es de OpenStreetMap y solo se carga al hacer clic.",
   "local.mapa_titulo": "Mapa con la ubicación de Maré Alta en Olhão",
-  "local.direcoes": "Cómo llegar"
+  "local.direcoes": "Cómo llegar",
+  "footer.texto": "Marisquería en Olhão desde 1987. Marisco de la Ria Formosa, pescado del día y cataplanas.",
+  "footer.contactos": "Contacto",
+  "footer.navegar": "Navegar",
+  "footer.ficticio": "Restaurante ficticio, creado como proyecto de portfolio. Los datos de contacto no son reales.",
+  "footer.feito": "HTML, CSS y JavaScript, sin frameworks."
 }

@@ -776,3 +776,81 @@
 .local__mapa iframe { width: 100%; height: 20rem; border: 0; border-radius: var(--raio-sm); }
 .local__aviso { max-width: 22rem; color: var(--tinta-suave); font-size: var(--fs-xs); }
 .local__direcoes { justify-self: start; }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+  padding-top: clamp(3.5rem, 3rem + 3vw, 5rem);
+  background: var(--mar);
+  color: rgb(255 253 248 / 0.85);
+  font-size: var(--fs-sm);
+}
+
+.footer__grelha {
+  display: grid;
+  gap: 2.5rem 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+}
+
+@media (min-width: 1024px) {
+  .footer__grelha { grid-template-columns: 2fr 1.2fr 1fr 1fr; }
+}
+
+.footer .logo { color: var(--espuma); margin-bottom: 1rem; }
+.footer__marca p { max-width: 22rem; }
+
+.footer__titulo {
+  margin-bottom: 1rem;
+  color: var(--espuma);
+  font-family: var(--font-texto);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.footer__lista { display: grid; gap: 0.6rem; padding: 0; list-style: none; }
+.footer a { color: rgb(255 253 248 / 0.85); text-decoration: none; }
+.footer a:hover { color: #f7b893; text-decoration: underline; }
+
+.idiomas--footer { display: inline-flex; margin-left: 0; color: var(--espuma); }
+
+.footer__base {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-top: 3rem;
+  padding-block: 1.5rem;
+  border-top: 1px solid rgb(255 253 248 / 0.15);
+  color: rgb(255 253 248 / 0.7);
+  font-size: var(--fs-xs);
+}
+
+/* ==========================================================================
+   Botão de reserva flutuante (só no telemóvel)
+   ========================================================================== */
+
+.reservar-flutuante {
+  position: fixed;
+  right: var(--gutter);
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  z-index: 40;
+  display: none;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  background: var(--coral-escuro);
+  color: var(--espuma);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 12px 30px -10px rgb(0 0 0 / 0.55);
+  transition: opacity 0.25s, transform 0.25s;
+}
+.reservar-flutuante:hover { color: var(--espuma); background: #a63b1b; }
+.reservar-flutuante.is-escondido { opacity: 0; transform: translateY(1rem); pointer-events: none; }
+
+@media (max-width: 767px) {
+  .reservar-flutuante { display: inline-flex; }
+}

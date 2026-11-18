@@ -133,5 +133,10 @@
   "local.ver_mapa": "Show map",
   "local.aviso_mapa": "The map comes from OpenStreetMap and only loads when you click.",
   "local.mapa_titulo": "Map showing Maré Alta's location in Olhão",
-  "local.direcoes": "Get directions"
+  "local.direcoes": "Get directions",
+  "footer.texto": "Seafood restaurant in Olhão since 1987. Ria Formosa shellfish, catch of the day and cataplanas.",
+  "footer.contactos": "Contact",
+  "footer.navegar": "Explore",
+  "footer.ficticio": "Fictional restaurant, built as a portfolio project. Contact details are not real.",
+  "footer.feito": "HTML, CSS and JavaScript, no frameworks."
 }

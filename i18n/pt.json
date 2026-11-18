@@ -133,5 +133,10 @@
   "local.ver_mapa": "Ver no mapa",
   "local.aviso_mapa": "O mapa é do OpenStreetMap e só carrega quando clicar.",
   "local.mapa_titulo": "Mapa com a localização do Maré Alta em Olhão",
-  "local.direcoes": "Como chegar"
+  "local.direcoes": "Como chegar",
+  "footer.texto": "Marisqueira em Olhão desde 1987. Marisco da Ria Formosa, peixe do dia e cataplanas.",
+  "footer.contactos": "Contactos",
+  "footer.navegar": "Navegar",
+  "footer.ficticio": "Restaurante fictício, criado como projeto de portefólio. Os contactos não são reais.",
+  "footer.feito": "HTML, CSS e JavaScript, sem frameworks."
 }

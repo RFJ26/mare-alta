@@ -17,6 +17,94 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/sections.css">
 
+  <!-- Dados estruturados (schema.org/Restaurant). Gerados a partir de data/info.json; manter em sincronia. -->
+  <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Maré Alta",
+    "description": "Marisqueira em Olhão, junto à Ria Formosa. Restaurante fictício criado como projeto de portefólio.",
+    "url": "https://mare-alta.example/",
+    "image": [
+      "https://mare-alta.example/assets/img/hero-1600.webp",
+      "https://mare-alta.example/assets/img/galeria-mariscada-1200.webp"
+    ],
+    "telephone": "+351289000000",
+    "email": "reservas@mare-alta.example",
+    "servesCuisine": [
+      "Marisco",
+      "Peixe",
+      "Cozinha algarvia"
+    ],
+    "priceRange": "€€",
+    "acceptsReservations": true,
+    "menu": "https://mare-alta.example/#menu",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Avenida 5 de Outubro, 120",
+      "postalCode": "8700-307",
+      "addressLocality": "Olhão",
+      "addressRegion": "Faro",
+      "addressCountry": "PT"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 37.0262,
+      "longitude": -7.8412
+    },
+    "hasMap": "https://www.openstreetmap.org/?mlat=37.0262&mlon=-7.8412#map=18/37.0262/-7.8412",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "12:00",
+        "closes": "15:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Tuesday",
+          "Wednesday",
+          "Thursday"
+        ],
+        "opens": "19:00",
+        "closes": "23:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "19:00",
+        "closes": "00:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "12:00",
+        "closes": "16:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Sunday"
+        ],
+        "opens": "19:00",
+        "closes": "22:30"
+      }
+    ]
+  }
+  </script>
+
   <script type="module" src="js/main.js"></script>
 </head>
 <body>
@@ -346,5 +434,58 @@
       </div>
     </section>
   </main>
+
+  <!-- Botão de reserva fixo no telemóvel -->
+  <a class="reservar-flutuante" href="#reservas" data-reservar-flutuante data-i18n="hero.reservar">Reservar mesa</a>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__grelha">
+      <div class="footer__marca">
+        <a class="logo" href="#topo">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+            <path d="M3 13c3.5-4 6.5-4 10 0s6.5 4 10 0 4.5-3 6-2"/>
+            <path d="M3 21c3.5-4 6.5-4 10 0s6.5 4 10 0 4.5-3 6-2"/>
+          </svg>
+          Maré Alta
+        </a>
+        <p data-i18n="footer.texto">Marisqueira em Olhão desde 1987. Marisco da Ria Formosa, peixe do dia e cataplanas.</p>
+      </div>
+
+      <div>
+        <h2 class="footer__titulo" data-i18n="footer.contactos">Contactos</h2>
+        <ul class="footer__lista">
+          <li><a href="tel:+351289000000">+351 289 000 000</a></li>
+          <li><a href="mailto:reservas@mare-alta.example">reservas@mare-alta.example</a></li>
+          <li>Av. 5 de Outubro, 120<br>8700-307 Olhão</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="footer__titulo" data-i18n="footer.navegar">Navegar</h2>
+        <ul class="footer__lista">
+          <li><a href="#sobre" data-i18n="nav.sobre">Sobre</a></li>
+          <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
+          <li><a href="#galeria" data-i18n="nav.galeria">Galeria</a></li>
+          <li><a href="#reservas" data-i18n="nav.reservas">Reservas</a></li>
+          <li><a href="#horario" data-i18n="nav.horario">Horário</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="footer__titulo" data-i18n="nav.idioma">Idioma</h2>
+        <div class="idiomas idiomas--footer" role="group" aria-label="Idioma" data-i18n-attr="aria-label:nav.idioma">
+          <button type="button" data-lang="pt" aria-pressed="true" lang="pt-PT">PT</button>
+          <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+          <button type="button" data-lang="es" aria-pressed="false" lang="es">ES</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer__base">
+      <p data-i18n="footer.ficticio">Restaurante fictício, criado como projeto de portefólio. Os contactos não são reais.</p>
+      <p>© <span data-ano>2026</span> Maré Alta · <span data-i18n="footer.feito">HTML, CSS e JavaScript, sem frameworks.</span></p>
+    </div>
+  </footer>
 </body>
 </html>
