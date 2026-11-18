@@ -14,5 +14,17 @@
   "hero.titulo": "Marisco de la ría, <em>a la mesa</em> en Olhão",
   "hero.texto": "Almejas, ostras y pescado que llegan cada mañana del mercado de al lado. Cocina algarvia, sin prisas, con vistas a la ría.",
   "hero.reservar": "Reservar mesa",
-  "hero.menu": "Ver la carta"
+  "hero.menu": "Ver la carta",
+  "sobre.img_alt": "Cataplana de almejas recién salida del fuego",
+  "sobre.desde": "junto a la ría",
+  "sobre.sobretitulo": "Nuestra casa",
+  "sobre.titulo": "Una familia, una ría y el marisco del día",
+  "sobre.p1": "Maré Alta abrió en 1987, a dos pasos de los mercados de Olhão. Empezó como taberna de pescadores y sigue en manos de la misma familia.",
+  "sobre.p2": "Cada mañana elegimos el marisco y el pescado en la lonja. Si no está fresco, no entra en la cocina, así que la carta cambia con la marea y la temporada.",
+  "sobre.d1_t": "De la lonja a la mesa",
+  "sobre.d1_p": "Marisco y pescado comprados cada mañana.",
+  "sobre.d2_t": "Terraza sobre la ría",
+  "sobre.d2_p": "Atardeceres con vistas a las islas de Armona y Culatra.",
+  "sobre.d3_t": "Recetas de la casa",
+  "sobre.d3_p": "Cataplana, arroz de navajas y xerém de almejas."
 }

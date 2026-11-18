@@ -188,3 +188,84 @@
   height: clamp(40px, 6vw, 90px);
   color: var(--areia);
 }
+
+/* ==========================================================================
+   Sobre
+   ========================================================================== */
+
+.sobre__grelha {
+  display: grid;
+  gap: clamp(2.5rem, 2rem + 4vw, 5rem);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .sobre__grelha { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+}
+
+.sobre__figura {
+  position: relative;
+  max-width: 30rem;
+  justify-self: center;
+}
+
+.sobre__figura img {
+  width: 100%;
+  border-radius: 200px 200px var(--raio) var(--raio); /* arco, como as janelas das casas algarvias */
+  box-shadow: var(--sombra);
+  aspect-ratio: 9 / 11;
+  object-fit: cover;
+}
+
+.sobre__selo {
+  position: absolute;
+  right: -0.75rem;
+  bottom: 2rem;
+  display: grid;
+  place-items: center;
+  width: 7.5rem;
+  aspect-ratio: 1;
+  padding: 1rem;
+  border-radius: 50%;
+  background: var(--coral-escuro);
+  color: var(--espuma);
+  font-size: var(--fs-xs);
+  line-height: 1.2;
+  text-align: center;
+  box-shadow: var(--sombra);
+  transform: rotate(-8deg);
+}
+.sobre__selo-ano { display: block; font-family: var(--font-titulo); font-size: 1.75rem; font-weight: 600; }
+
+.sobre__texto > p + p { margin-top: 1rem; }
+
+.sobre__destaques {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.sobre__destaques li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.sobre__destaques svg {
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0.6rem;
+  border-radius: 50%;
+  background: var(--espuma);
+  border: 1px solid var(--linha);
+  fill: none;
+  stroke: var(--ria);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.sobre__destaques h3 { font-size: var(--fs-lg); color: var(--mar); }
+.sobre__destaques p { margin-top: 0.15rem; color: var(--tinta-suave); font-size: var(--fs-sm); }
