@@ -116,5 +116,22 @@
   "reservas.erros_1": "There is 1 field to fix.",
   "reservas.sucesso": "We've opened WhatsApp with your request. Just tap send.",
   "reservas.bloqueado": "Your browser blocked the new window.",
-  "reservas.abrir_whatsapp": "Open WhatsApp"
+  "reservas.abrir_whatsapp": "Open WhatsApp",
+  "estado.aberto": "Open now",
+  "estado.fechado": "Closed",
+  "estado.fecha_as": "closes at {hora}",
+  "estado.abre_hoje": "opens today at {hora}",
+  "estado.abre_amanha": "opens tomorrow at {hora}",
+  "estado.abre_dia": "opens {dia} at {hora}",
+  "horario.sobretitulo": "Visit us",
+  "horario.titulo": "Opening hours and location",
+  "horario.legenda": "Opening hours (Portugal time)",
+  "horario.fuso": "Mainland Portugal time (Europe/Lisbon).",
+  "horario.hoje": "today",
+  "horario.fechado": "Closed",
+  "local.nota": "Opposite Olhão's markets. Public parking 200 m away at Largo da Feira.",
+  "local.ver_mapa": "Show map",
+  "local.aviso_mapa": "The map comes from OpenStreetMap and only loads when you click.",
+  "local.mapa_titulo": "Map showing Maré Alta's location in Olhão",
+  "local.direcoes": "Get directions"
 }

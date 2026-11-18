@@ -64,6 +64,7 @@
            alt="" fetchpriority="high" decoding="async">
       <div class="container hero__conteudo">
         <p class="hero__local" data-i18n="hero.local">Olhão · Ria Formosa · Algarve</p>
+        <p class="estado estado--hero" data-estado hidden></p>
         <h1 class="hero__titulo" id="hero-titulo" data-i18n-html="hero.titulo">Marisco da ria, <em>à mesa</em> em Olhão</h1>
         <p class="hero__texto" data-i18n="hero.texto">Amêijoas, ostras e peixe que chegam todas as manhãs do mercado ao lado. Cozinha algarvia, sem pressas, com vista para a ria.</p>
         <div class="hero__acoes">
@@ -300,6 +301,48 @@
             <p class="reservas__estado" data-reserva-estado role="status" aria-live="polite" hidden></p>
           </div>
         </form>
+      </div>
+    </section>
+    <!-- HORÁRIO E LOCALIZAÇÃO -->
+    <section class="secao horario" id="horario" aria-labelledby="horario-titulo">
+      <div class="container horario__grelha">
+        <div>
+          <p class="secao__sobretitulo" data-i18n="horario.sobretitulo">Visite-nos</p>
+          <h2 class="secao__titulo" id="horario-titulo" data-i18n="horario.titulo">Horário e localização</h2>
+          <p class="estado" data-estado hidden></p>
+
+          <table class="horario__tabela" data-horario-tabela>
+            <caption class="sr-only" data-i18n="horario.legenda">Horário de funcionamento (hora de Portugal)</caption>
+            <tbody>
+              <!-- Preenchido por horario.js a partir de data/info.json -->
+              <tr><th scope="row">Terça a quinta</th><td>12:00–15:30 · 19:00–23:00</td></tr>
+              <tr><th scope="row">Sexta e sábado</th><td>12:00–16:00 · 19:00–00:30</td></tr>
+              <tr><th scope="row">Domingo</th><td>12:00–16:00 · 19:00–22:30</td></tr>
+              <tr><th scope="row">Segunda</th><td>Fechado</td></tr>
+            </tbody>
+          </table>
+          <p class="horario__fuso" data-i18n="horario.fuso">Horas de Portugal continental (Europe/Lisbon).</p>
+        </div>
+
+        <div class="local">
+          <address class="local__morada">
+            <strong>Maré Alta</strong><br>
+            Avenida 5 de Outubro, 120<br>
+            8700-307 Olhão, Portugal<br>
+            <a href="tel:+351289000000">+351 289 000 000</a>
+          </address>
+          <p class="local__nota" data-i18n="local.nota">Em frente aos mercados de Olhão. Estacionamento público a 200 m, no Largo da Feira.</p>
+
+          <div class="local__mapa" data-mapa>
+            <button type="button" class="btn btn--escuro" data-mapa-carregar>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+              <span data-i18n="local.ver_mapa">Ver no mapa</span>
+            </button>
+            <p class="local__aviso" data-i18n="local.aviso_mapa">O mapa é do OpenStreetMap e só carrega quando clicar.</p>
+          </div>
+
+          <a class="btn btn--primario local__direcoes" href="https://www.google.com/maps/dir/?api=1&amp;destination=37.0262,-7.8412" target="_blank" rel="noopener" data-i18n="local.direcoes">Como chegar</a>
+        </div>
       </div>
     </section>
   </main>

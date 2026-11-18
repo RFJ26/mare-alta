@@ -661,3 +661,118 @@
 .reservas__estado--ok { background: #dcefe4; color: #174a30; }
 .reservas__estado--ok a { color: #174a30; font-weight: 700; }
 .reservas__estado--erro { background: #fbe4e1; color: #8f1f14; }
+
+/* ==========================================================================
+   Indicador aberto / fechado
+   ========================================================================== */
+
+.estado {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-size: var(--fs-sm);
+}
+.estado--aberto { background: #dcefe4; color: #174a30; }
+.estado--fechado { background: #fbe4e1; color: #8f1f14; }
+
+.estado__ponto {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+.estado--aberto .estado__ponto { box-shadow: 0 0 0 0 currentColor; animation: pulsar 2s infinite; }
+
+@keyframes pulsar {
+  70% { box-shadow: 0 0 0 7px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+/* No hero aparece por cima da imagem, por isso fica translúcido */
+.estado--hero { display: flex; width: fit-content; margin: 0 0 1.25rem; backdrop-filter: blur(6px); }
+.estado--hero.estado--aberto { background: rgb(220 239 228 / 0.92); }
+.estado--hero.estado--fechado { background: rgb(251 228 225 / 0.92); }
+
+/* ==========================================================================
+   Horário e localização
+   ========================================================================== */
+
+.horario__grelha { display: grid; gap: clamp(2.5rem, 2rem + 3vw, 4rem); }
+
+@media (min-width: 900px) {
+  .horario__grelha { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+}
+
+.horario__tabela {
+  width: 100%;
+  margin-top: 1.75rem;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.horario__tabela th, .horario__tabela td {
+  padding: 0.8rem 0.75rem;
+  border-bottom: 1px solid var(--linha);
+  text-align: left;
+  vertical-align: top;
+}
+.horario__tabela th { font-weight: 600; color: var(--mar); }
+/* Só a primeira letra: capitalize daria "Terça-Feira" */
+.horario__tabela th::first-letter { text-transform: uppercase; }
+.horario__tabela td { color: var(--tinta-suave); }
+.horario__tabela td.is-fechado { color: var(--fechado); font-weight: 500; }
+.horario__tabela tr.is-hoje { background: var(--espuma); }
+.horario__tabela tr.is-hoje th, .horario__tabela tr.is-hoje td { color: var(--tinta); font-weight: 600; }
+.horario__tabela tr.is-hoje th { border-left: 3px solid var(--coral); }
+
+.horario__hoje {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  background: var(--coral-escuro);
+  color: var(--espuma);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-transform: none;
+  vertical-align: middle;
+}
+
+.horario__fuso { margin-top: 0.75rem; color: var(--tinta-suave); font-size: var(--fs-xs); }
+
+.local {
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(1.25rem, 1rem + 2vw, 2rem);
+  border-radius: var(--raio);
+  background: var(--espuma);
+  border: 1px solid var(--linha);
+}
+
+.local__morada { font-style: normal; font-size: var(--fs-lg); line-height: 1.5; }
+.local__morada strong { font-family: var(--font-titulo); font-size: var(--fs-xl); color: var(--mar); }
+.local__nota { color: var(--tinta-suave); }
+
+.local__mapa {
+  display: grid;
+  place-items: center;
+  gap: 0.75rem;
+  min-height: 16rem;
+  padding: 1.5rem;
+  border-radius: var(--raio-sm);
+  text-align: center;
+  /* Fundo que sugere um mapa enquanto não é carregado */
+  background:
+    radial-gradient(circle at 60% 45%, var(--coral) 0 6px, transparent 7px),
+    linear-gradient(115deg, transparent 48%, rgb(31 122 116 / 0.25) 48% 58%, transparent 58%),
+    repeating-linear-gradient(0deg, rgb(15 47 69 / 0.06) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(90deg, rgb(15 47 69 / 0.06) 0 1px, transparent 1px 28px),
+    var(--areia);
+}
+.local__mapa.is-carregado { padding: 0; background: var(--areia-escura); }
+.local__mapa iframe { width: 100%; height: 20rem; border: 0; border-radius: var(--raio-sm); }
+.local__aviso { max-width: 22rem; color: var(--tinta-suave); font-size: var(--fs-xs); }
+.local__direcoes { justify-self: start; }

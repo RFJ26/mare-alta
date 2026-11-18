@@ -116,5 +116,22 @@
   "reservas.erros_1": "Há 1 campo por corrigir.",
   "reservas.sucesso": "Abrimos o WhatsApp com o seu pedido. Só falta carregar em enviar.",
   "reservas.bloqueado": "O browser bloqueou a nova janela.",
-  "reservas.abrir_whatsapp": "Abrir o WhatsApp"
+  "reservas.abrir_whatsapp": "Abrir o WhatsApp",
+  "estado.aberto": "Aberto agora",
+  "estado.fechado": "Fechado",
+  "estado.fecha_as": "fecha às {hora}",
+  "estado.abre_hoje": "abre hoje às {hora}",
+  "estado.abre_amanha": "abre amanhã às {hora}",
+  "estado.abre_dia": "abre {dia} às {hora}",
+  "horario.sobretitulo": "Visite-nos",
+  "horario.titulo": "Horário e localização",
+  "horario.legenda": "Horário de funcionamento (hora de Portugal)",
+  "horario.fuso": "Horas de Portugal continental (Europe/Lisbon).",
+  "horario.hoje": "hoje",
+  "horario.fechado": "Fechado",
+  "local.nota": "Em frente aos mercados de Olhão. Estacionamento público a 200 m, no Largo da Feira.",
+  "local.ver_mapa": "Ver no mapa",
+  "local.aviso_mapa": "O mapa é do OpenStreetMap e só carrega quando clicar.",
+  "local.mapa_titulo": "Mapa com a localização do Maré Alta em Olhão",
+  "local.direcoes": "Como chegar"
 }

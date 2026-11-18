@@ -3,6 +3,7 @@ import { iniciarI18n } from './i18n.js';
 import { iniciarMenu } from './menu.js';
 import { iniciarGaleria } from './galeria.js';
 import { iniciarReservas } from './reservas.js';
+import { iniciarHorario } from './horario.js';
 
 /** Cabeçalho fica sólido depois do hero; menu móvel abre/fecha. */
 function iniciarCabecalho() {
@@ -37,3 +38,4 @@ iniciarGaleria();
 await iniciarI18n();
 iniciarMenu();
 iniciarReservas();
+iniciarHorario();

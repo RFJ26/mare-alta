@@ -4,6 +4,8 @@
 //   "sex": [["12:00", "15:30"], ["19:00", "00:30"]]
 // Um fecho "menor" do que a abertura (00:30) significa que passa da meia-noite.
 
+import { t, locale } from './i18n.js';
+
 export const DIAS = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab']; // ordem de Date.getDay()
 
 let info = null;
@@ -108,4 +110,109 @@ export function horasDisponiveis(info, data, agora) {
     }
   }
   return lista;
+}
+
+// ---------------------------------------------------------------------------
+// Interface: indicador "Aberto agora / Fechado", tabela do horário e mapa.
+// ---------------------------------------------------------------------------
+
+
+/** Nome do dia da semana no idioma ativo (0 = domingo). */
+function nomeDia(dia, formato = 'long') {
+  // 2026-11-15 foi um domingo: somar "dia" dias dá o dia pretendido
+  return new Intl.DateTimeFormat(locale(), { weekday: formato, timeZone: 'UTC' })
+    .format(new Date(Date.UTC(2026, 10, 15 + dia)));
+}
+
+function textoEstado(estado) {
+  if (estado.aberto) return { classe: 'aberto', titulo: t('estado.aberto'), detalhe: t('estado.fecha_as', { hora: estado.fechaAs }) };
+  if (!estado.abre) return { classe: 'fechado', titulo: t('estado.fechado'), detalhe: '' };
+  const { emDias, hora, dia } = estado.abre;
+  const quando = emDias === 0 ? t('estado.abre_hoje', { hora })
+    : emDias === 1 ? t('estado.abre_amanha', { hora })
+    : t('estado.abre_dia', { dia: nomeDia(dia), hora });
+  return { classe: 'fechado', titulo: t('estado.fechado'), detalhe: quando };
+}
+
+function desenharEstado(info) {
+  const estado = estadoAtual(info.horario, agoraEmLisboa(info.fusoHorario));
+  const { classe, titulo, detalhe } = textoEstado(estado);
+  document.querySelectorAll('[data-estado]').forEach((el) => {
+    el.className = `estado estado--${classe}${el.classList.contains('estado--hero') ? ' estado--hero' : ''}`;
+    el.replaceChildren();
+    const ponto = document.createElement('span');
+    ponto.className = 'estado__ponto';
+    ponto.setAttribute('aria-hidden', 'true');
+    const forte = document.createElement('strong');
+    forte.textContent = titulo;
+    el.append(ponto, forte);
+    if (detalhe) el.append(document.createTextNode(` · ${detalhe}`));
+    el.hidden = false;
+  });
+}
+
+function desenharTabela(info) {
+  const tbody = document.querySelector('[data-horario-tabela] tbody');
+  if (!tbody) return;
+  const hoje = agoraEmLisboa(info.fusoHorario).dia;
+  // Começa à segunda-feira, como é habitual em Portugal
+  const ordem = [1, 2, 3, 4, 5, 6, 0];
+  tbody.replaceChildren(
+    ...ordem.map((dia) => {
+      const tr = document.createElement('tr');
+      if (dia === hoje) {
+        tr.className = 'is-hoje';
+        tr.setAttribute('aria-current', 'date');
+      }
+      const th = document.createElement('th');
+      th.scope = 'row';
+      th.textContent = nomeDia(dia);
+      if (dia === hoje) {
+        const badge = document.createElement('span');
+        badge.className = 'horario__hoje';
+        badge.textContent = t('horario.hoje');
+        th.append(' ', badge);
+      }
+      const td = document.createElement('td');
+      const lista = info.horario[DIAS[dia]];
+      td.textContent = lista.length ? lista.map(([a, f]) => `${a}–${f}`).join(' · ') : t('horario.fechado');
+      if (!lista.length) td.className = 'is-fechado';
+      tr.append(th, td);
+      return tr;
+    }),
+  );
+}
+
+/** Mapa do OpenStreetMap carregado só a pedido (privacidade e performance). */
+function iniciarMapa(info) {
+  const caixa = document.querySelector('[data-mapa]');
+  const botao = caixa?.querySelector('[data-mapa-carregar]');
+  if (!botao) return;
+  botao.addEventListener('click', () => {
+    const { lat, lng } = info.coordenadas;
+    const d = 0.006;
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.openstreetmap.org/export/embed.html?bbox=${lng - d},${lat - d},${lng + d},${lat + d}&layer=mapnik&marker=${lat},${lng}`;
+    iframe.title = t('local.mapa_titulo');
+    iframe.loading = 'lazy';
+    iframe.referrerPolicy = 'no-referrer';
+    caixa.replaceChildren(iframe);
+    caixa.classList.add('is-carregado');
+  }, { once: true });
+}
+
+export async function iniciarHorario() {
+  let info;
+  try {
+    info = await carregarInfo();
+  } catch (erro) {
+    console.error('Horário indisponível:', erro);
+    return;
+  }
+  const desenhar = () => { desenharEstado(info); desenharTabela(info); };
+  desenhar();
+  iniciarMapa(info);
+  document.addEventListener('idioma:mudou', desenhar);
+  // Atualiza no início de cada minuto
+  setTimeout(() => { desenhar(); setInterval(desenhar, 60_000); }, (60 - new Date().getSeconds()) * 1000);
 }
