@@ -175,7 +175,12 @@ function desenharTabela(info) {
       }
       const td = document.createElement('td');
       const lista = info.horario[DIAS[dia]];
-      td.textContent = lista.length ? lista.map(([a, f]) => `${a}–${f}`).join(' · ') : t('horario.fechado');
+      if (lista.length) {
+        // Um <span> por turno: em ecrãs estreitos ficam em linhas separadas (ver CSS)
+        td.append(...lista.map(([a, f]) => Object.assign(document.createElement('span'), { className: 'turno', textContent: `${a}–${f}` })));
+      } else {
+        td.textContent = t('horario.fechado');
+      }
       if (!lista.length) td.className = 'is-fechado';
       tr.append(th, td);
       return tr;

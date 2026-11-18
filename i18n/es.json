@@ -138,5 +138,6 @@
   "footer.contactos": "Contacto",
   "footer.navegar": "Navegar",
   "footer.ficticio": "Restaurante ficticio, creado como proyecto de portfolio. Los datos de contacto no son reales.",
-  "footer.feito": "HTML, CSS y JavaScript, sin frameworks."
+  "footer.feito": "HTML, CSS y JavaScript, sin frameworks.",
+  "menu.alergias": "Filtrar alérgenos"
 }

@@ -36,6 +36,7 @@
   font-weight: 600;
   text-decoration: none;
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 .logo:hover { color: inherit; }
 .logo svg { width: 1.9rem; color: var(--coral); }
@@ -199,7 +200,7 @@
   align-items: center;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 768px) {
   .sobre__grelha { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
 }
 
@@ -524,7 +525,11 @@
 .galeria__item a:hover img { transform: scale(1.05); filter: saturate(1.15); }
 
 .lightbox {
-  width: min(96vw, 75rem);
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  height: fit-content;
+  width: min(94vw, 75rem);
   max-height: 94vh;
   padding: 0;
   border: 0;
@@ -562,7 +567,7 @@
   box-shadow: var(--sombra);
 }
 .lightbox__btn:hover { background: var(--espuma); }
-.lightbox__btn--fechar { top: -0.75rem; right: -0.75rem; font-size: 1.1rem; }
+.lightbox__btn--fechar { top: 0.75rem; right: 0.75rem; font-size: 1.1rem; }
 .lightbox__btn--ant { left: 0.75rem; top: 41%; }
 .lightbox__btn--seg { right: 0.75rem; top: 41%; }
 
@@ -853,4 +858,48 @@
 
 @media (max-width: 767px) {
   .reservar-flutuante { display: inline-flex; }
+}
+
+/* Painel de alérgenos recolhível (fechado por defeito no telemóvel) */
+.menu__detalhes { min-width: 0; }
+.menu__resumo-alerg {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: fit-content;
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem 0.5rem 0.85rem;
+  border: 1.5px solid var(--tijolo);
+  border-radius: 999px;
+  color: var(--tijolo);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  list-style: none;
+}
+.menu__resumo-alerg::-webkit-details-marker { display: none; }
+.menu__resumo-alerg::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 0.2s;
+}
+.menu__detalhes[open] .menu__resumo-alerg::before { transform: rotate(45deg); }
+.menu__detalhes[open] .menu__resumo-alerg { margin-bottom: 1rem; }
+.menu__badge {
+  padding: 0.05rem 0.55rem;
+  border-radius: 999px;
+  background: var(--tijolo);
+  color: var(--espuma);
+  font-size: var(--fs-xs);
+}
+
+.turno { white-space: nowrap; }
+.turno + .turno::before { content: " · "; }
+@media (max-width: 520px) {
+  .turno { display: block; }
+  .turno + .turno::before { content: none; }
 }

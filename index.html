@@ -171,7 +171,7 @@
         <figure class="sobre__figura">
           <img src="assets/img/sobre-900.webp"
                srcset="assets/img/sobre-450.webp 450w, assets/img/sobre-900.webp 900w"
-               sizes="(min-width: 900px) 40vw, 90vw" width="900" height="1100"
+               sizes="(min-width: 768px) 40vw, 90vw" width="900" height="1100"
                alt="Cataplana de amêijoas acabada de sair do lume" data-i18n-attr="alt:sobre.img_alt"
                loading="lazy" decoding="async">
           <figcaption class="sobre__selo">
@@ -218,10 +218,13 @@
             <p class="menu__rotulo" id="rotulo-cat" data-i18n="menu.filtro_cat">Categoria</p>
             <div class="menu__categorias" role="group" aria-labelledby="rotulo-cat" data-menu-categorias></div>
           </div>
-          <fieldset class="menu__grupo">
-            <legend class="menu__rotulo" data-i18n="menu.filtro_alerg">Esconder pratos com</legend>
-            <div class="menu__alergenos" data-menu-alergenos></div>
-          </fieldset>
+          <details class="menu__detalhes" data-menu-detalhes>
+            <summary class="menu__resumo-alerg"><span data-i18n="menu.alergias">Filtrar alérgenos</span> <span class="menu__badge" data-menu-badge hidden></span></summary>
+            <fieldset class="menu__grupo">
+              <legend class="menu__rotulo" data-i18n="menu.filtro_alerg">Esconder pratos com</legend>
+              <div class="menu__alergenos" data-menu-alergenos></div>
+            </fieldset>
+          </details>
           <div class="menu__resumo">
             <p aria-live="polite" data-menu-estado></p>
             <button type="button" class="link-botao" data-menu-limpar hidden data-i18n="menu.limpar">Limpar filtros</button>

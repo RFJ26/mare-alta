@@ -122,6 +122,8 @@ function desenharPratos() {
   el.vazio.hidden = visiveis.length > 0;
   el.estado.textContent = t(visiveis.length === 1 ? 'menu.contagem_1' : 'menu.contagem', { n: visiveis.length });
   el.limpar.hidden = estado.categoria === 'todos' && estado.sem.size === 0;
+  el.badge.hidden = estado.sem.size === 0;
+  el.badge.textContent = String(estado.sem.size);
 }
 
 function atualizar() {
@@ -140,7 +142,12 @@ export async function iniciarMenu() {
     vazio: raiz.querySelector('[data-menu-vazio]'),
     estado: raiz.querySelector('[data-menu-estado]'),
     limpar: raiz.querySelector('[data-menu-limpar]'),
+    badge: raiz.querySelector('[data-menu-badge]'),
+    detalhes: raiz.querySelector('[data-menu-detalhes]'),
   });
+
+  // Painel de alérgenos: aberto em ecrãs largos ou se já houver filtros no URL
+  const largo = window.matchMedia('(min-width: 768px)');
 
   try {
     const res = await fetch('data/menu.json');
@@ -153,6 +160,7 @@ export async function iniciarMenu() {
   }
 
   lerUrl();
+  el.detalhes.open = largo.matches || estado.sem.size > 0;
 
   el.categorias.addEventListener('click', (e) => {
     const b = e.target.closest('button[data-cat]');

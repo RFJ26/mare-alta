@@ -33,10 +33,10 @@ function iniciarCabecalho() {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') fechar(); });
 }
 
-/** Botão "Reservar" do telemóvel desaparece no hero e na própria secção de reservas. */
+/** Botão "Reservar" do telemóvel desaparece no hero, na secção de reservas e no footer. */
 function iniciarBotaoFlutuante() {
   const botao = document.querySelector('[data-reservar-flutuante]');
-  const alvos = [document.querySelector('.hero'), document.getElementById('reservas')].filter(Boolean);
+  const alvos = [document.querySelector('.hero'), document.getElementById('reservas'), document.querySelector('.footer')].filter(Boolean);
   if (!botao || !('IntersectionObserver' in window)) return;
   const visiveis = new Set();
   const observador = new IntersectionObserver((entradas) => {
