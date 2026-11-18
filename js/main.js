@@ -1,5 +1,6 @@
 // main.js: ponto de entrada. Cada secção tem o seu módulo.
 import { iniciarI18n } from './i18n.js';
+import { iniciarMenu } from './menu.js';
 
 /** Cabeçalho fica sólido depois do hero; menu móvel abre/fecha. */
 function iniciarCabecalho() {
@@ -31,3 +32,4 @@ function iniciarCabecalho() {
 
 iniciarCabecalho();
 await iniciarI18n();
+iniciarMenu();

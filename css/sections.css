@@ -269,3 +269,216 @@
 
 .sobre__destaques h3 { font-size: var(--fs-lg); color: var(--mar); }
 .sobre__destaques p { margin-top: 0.15rem; color: var(--tinta-suave); font-size: var(--fs-sm); }
+
+/* ==========================================================================
+   Menu
+   ========================================================================== */
+
+.menu {
+  background-color: var(--espuma);
+  /* Padrão subtil de rede de pesca */
+  background-image:
+    repeating-linear-gradient(45deg, rgb(31 122 116 / 0.045) 0 1px, transparent 1px 22px),
+    repeating-linear-gradient(-45deg, rgb(31 122 116 / 0.045) 0 1px, transparent 1px 22px);
+}
+
+.menu__filtros {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  margin-bottom: 2.5rem;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background: var(--areia);
+}
+
+.menu__grupo { border: 0; padding: 0; min-width: 0; }
+
+.menu__rotulo {
+  margin-bottom: 0.65rem;
+  padding: 0;
+  color: var(--tinta-suave);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.menu__categorias, .menu__alergenos { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.filtro {
+  min-height: 2.75rem;
+  padding: 0.5rem 1.1rem;
+  border: 1.5px solid var(--mar);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--mar);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  transition: background-color 0.2s, color 0.2s;
+}
+.filtro:hover { background: rgb(15 47 69 / 0.08); }
+.filtro[aria-pressed="true"] { background: var(--mar); color: var(--espuma); }
+
+.chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+.chip input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.chip span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.25rem;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid var(--linha);
+  border-radius: 999px;
+  background: var(--espuma);
+  font-size: var(--fs-sm);
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+.chip span::before {
+  content: "";
+  width: 0.85rem;
+  height: 0.85rem;
+  border: 1.5px solid currentColor;
+  border-radius: 3px;
+}
+.chip:hover span { border-color: var(--tijolo); }
+.chip input:checked + span {
+  background: var(--tijolo);
+  border-color: var(--tijolo);
+  color: var(--espuma);
+  text-decoration: line-through;
+}
+.chip input:checked + span::before {
+  background: currentColor;
+  box-shadow: inset 0 0 0 2px var(--tijolo);
+}
+.chip input:focus-visible + span { outline: 3px solid var(--coral); outline-offset: 2px; }
+
+.menu__resumo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  color: var(--tinta-suave);
+  font-size: var(--fs-sm);
+}
+
+.link-botao {
+  padding: 0.25rem 0;
+  border: 0;
+  background: none;
+  color: var(--ria-escuro);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.menu__pratos { display: grid; gap: 3rem; }
+
+.menu__cat-titulo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  color: var(--mar);
+  font-size: var(--fs-xl);
+}
+.menu__cat-titulo::after { content: ""; flex: 1; height: 1px; background: var(--linha); }
+
+.menu__lista {
+  display: grid;
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .menu__lista { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.5rem; }
+}
+
+.prato {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.25rem;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background: var(--espuma);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.prato:hover { border-color: var(--ria); box-shadow: var(--sombra); }
+
+.prato__topo { display: flex; align-items: baseline; gap: 0.75rem; }
+
+.prato__nome {
+  font-family: var(--font-titulo);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--mar);
+}
+
+/* Linha pontilhada entre o nome e o preço, como numa ementa impressa */
+.prato__linha { flex: 1; min-width: 1rem; border-bottom: 2px dotted var(--linha); transform: translateY(-0.3em); }
+
+.prato__preco {
+  flex: none;
+  color: var(--tijolo);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.prato__desc { color: var(--tinta-suave); font-size: var(--fs-sm); }
+
+.prato__rodape {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.prato__tags { display: flex; flex-wrap: wrap; gap: 0.35rem; padding: 0; list-style: none; }
+
+.tag {
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: var(--areia-escura);
+  color: var(--tinta);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+}
+.tag--chef { background: #fbe3d8; color: #8a3417; }
+.tag--picante { background: #f9dcd7; color: #8f1f14; }
+.tag--vegetariano { background: #dcefe4; color: #1d5a3a; }
+.tag--partilhar { background: #dceeed; color: #145550; }
+.tag--mercado { background: #e9e3f3; color: #4a3474; }
+
+.prato__alergenos { color: var(--tinta-suave); font-size: var(--fs-xs); }
+
+.menu__vazio, .menu__erro {
+  padding: 2.5rem 1rem;
+  border: 1.5px dashed var(--linha);
+  border-radius: var(--raio);
+  text-align: center;
+  color: var(--tinta-suave);
+}
+
+.menu__nota {
+  max-width: 48rem;
+  margin-top: 2.5rem;
+  color: var(--tinta-suave);
+  font-size: var(--fs-sm);
+}

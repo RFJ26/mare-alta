@@ -114,6 +114,39 @@
         </div>
       </div>
     </section>
+
+    <!-- MENU -->
+    <section class="secao menu" id="menu" aria-labelledby="menu-titulo" data-menu>
+      <div class="container">
+        <div class="secao__topo">
+          <p class="secao__sobretitulo" data-i18n="menu.sobretitulo">Da ria para o prato</p>
+          <h2 class="secao__titulo" id="menu-titulo" data-i18n="menu.titulo">Menu</h2>
+          <p class="secao__intro" data-i18n="menu.intro">O marisco ao quilo é pesado à sua frente. Os preços incluem IVA.</p>
+        </div>
+
+        <div class="menu__filtros">
+          <div class="menu__grupo">
+            <p class="menu__rotulo" id="rotulo-cat" data-i18n="menu.filtro_cat">Categoria</p>
+            <div class="menu__categorias" role="group" aria-labelledby="rotulo-cat" data-menu-categorias></div>
+          </div>
+          <fieldset class="menu__grupo">
+            <legend class="menu__rotulo" data-i18n="menu.filtro_alerg">Esconder pratos com</legend>
+            <div class="menu__alergenos" data-menu-alergenos></div>
+          </fieldset>
+          <div class="menu__resumo">
+            <p aria-live="polite" data-menu-estado></p>
+            <button type="button" class="link-botao" data-menu-limpar hidden data-i18n="menu.limpar">Limpar filtros</button>
+          </div>
+        </div>
+
+        <div class="menu__pratos" data-menu-pratos>
+          <noscript><p data-i18n="menu.noscript">Ative o JavaScript para ver o menu, ou peça-o à mesa.</p></noscript>
+        </div>
+        <p class="menu__vazio" data-menu-vazio hidden data-i18n="menu.vazio">Nenhum prato corresponde aos filtros escolhidos.</p>
+
+        <p class="menu__nota" data-i18n="menu.nota">Tem alguma alergia ou intolerância? Fale connosco: a informação sobre alérgenos é indicativa e a cozinha trabalha com todos eles.</p>
+      </div>
+    </section>
   </main>
 </body>
 </html>
