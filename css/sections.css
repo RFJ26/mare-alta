@@ -482,3 +482,86 @@
   color: var(--tinta-suave);
   font-size: var(--fs-sm);
 }
+
+/* ==========================================================================
+   Galeria
+   ========================================================================== */
+
+.galeria__grelha {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: clamp(9rem, 6rem + 12vw, 15rem);
+  gap: clamp(0.5rem, 0.3rem + 1vw, 1rem);
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 1024px) {
+  .galeria__grelha { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  /* Algumas imagens ocupam mais espaço para a grelha não ser monótona */
+  .galeria__item--1 { grid-column: span 2; grid-row: span 2; }
+  .galeria__item--6 { grid-column: span 2; }
+}
+
+@media (max-width: 599px) {
+  .galeria__item--1 { grid-column: span 2; }
+}
+
+.galeria__item a {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--raio);
+  background: var(--areia-escura);
+}
+
+.galeria__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.3s;
+}
+.galeria__item a:hover img { transform: scale(1.05); filter: saturate(1.15); }
+
+.lightbox {
+  width: min(96vw, 75rem);
+  max-height: 94vh;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+}
+.lightbox::backdrop { background: rgb(8 24 35 / 0.88); backdrop-filter: blur(4px); }
+
+.lightbox__figura { margin: 0; }
+.lightbox__figura img {
+  width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: var(--raio);
+}
+.lightbox__legenda {
+  margin-top: 0.75rem;
+  color: var(--espuma);
+  text-align: center;
+  font-size: var(--fs-sm);
+}
+
+.lightbox__btn {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(255 253 248 / 0.92);
+  color: var(--mar);
+  font-size: 1.6rem;
+  line-height: 1;
+  box-shadow: var(--sombra);
+}
+.lightbox__btn:hover { background: var(--espuma); }
+.lightbox__btn--fechar { top: -0.75rem; right: -0.75rem; font-size: 1.1rem; }
+.lightbox__btn--ant { left: 0.75rem; top: 41%; }
+.lightbox__btn--seg { right: 0.75rem; top: 41%; }
